@@ -21,11 +21,11 @@ gem install sqlite3
 
 It can be executed from the command line with the following options
 
-`./categories --rebuild`
+`./categories.rb --rebuild`
 
 Create and populate the ebay categories database
 
-`./categories --render <CATEGORY_ID>`
+`./categories.rb --render <CATEGORY_ID>`
 
 Output a file named CATEGORY_ID.html that contains a simple web page displaying the category tree rooted at the given ID
 
