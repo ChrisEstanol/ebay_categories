@@ -9,6 +9,8 @@ EBAY_CONFIG = YAML::load(File.open("config/ebay.yml"))['development']
 
 class Ebay
   include HTTParty
+  # httparty request debug log
+  debug_output $stdout
 
   def self.GetCategoriesRequest
     format :xml
@@ -45,7 +47,7 @@ class Ebay
   end
 
   def self.api_url
-    EBAY_CONFIG['uri']
+    EBAY_CONFIG['uri_sandbox']
   end
 
 end
