@@ -12,15 +12,14 @@ class Ebay
   # httparty request debug log
   debug_output $stdout
 
-  def self.GetCategoriesRequest
+  def self.GetCategoriesRequest(site='3', level_limit='1')
     format :xml
 
     headers(ebay_headers.merge({"X-EBAY-API-CALL-NAME" => "GetCategories"}))
 
     requestXml = "<?xml version='1.0' encoding='utf-8'?>
       <GetCategoriesRequest xmlns='urn:ebay:apis:eBLBaseComponents'>
-       <CategoryParent>10542</CategoryParent>
-       <CategorySiteID>0</CategorySiteID>
+       <CategorySiteID>#{site}</CategorySiteID>
        <ViewAllNodes>True</ViewAllNodes>
        <DetailLevel>ReturnAll</DetailLevel>
        <RequesterCredentials>
@@ -39,6 +38,7 @@ class Ebay
     'X-EBAY-API-CERT-NAME' => EBAY_CONFIG['cert_name'],
     'X-EBAY-API-SITEID' => '0',
     'X-EBAY-API-COMPATIBILITY-LEVEL' => '861',
+    'X-EBAY-API-REQUEST-ENCODING' => ' JSON',
     'Content-Type' => 'text/xml' }
   end
 
